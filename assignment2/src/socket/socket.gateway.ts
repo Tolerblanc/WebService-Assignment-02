@@ -21,6 +21,7 @@ export class SocketGateway implements OnGatewayConnection {
 
     private extractTokenFromHeader(cookie: string): string | undefined {
         const tokens = cookie?.split('; ');
+        if (!tokens) return undefined;
         for (const token of tokens) {
             if (token.startsWith('access_token=')) return token.split('=')[1];
         }
