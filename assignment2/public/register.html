@@ -10,15 +10,16 @@
             function checkPassword() {
                 let password = document.getElementById('pw1').value;
                 let confirmPassword = document.getElementById('pw2').value;
-                let passwordCondition = /^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z0-9]{4,}$/; // 영문, 숫자 조합, 4자 이상
+                let passwordCondition = /^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z0-9]{4,}$/;
 
                 if (password.match(passwordCondition) && password === confirmPassword) {
                     document.getElementById('passwordMatch').innerHTML = '비밀번호 일치';
-                    document.getElementById('submitBtn').disabled = false;
+                    isPasswordValid = true;
                 } else {
                     document.getElementById('passwordMatch').innerHTML = '비밀번호 불일치 또는 조건 미충족 (영문 숫자 조합, 4자 이상)';
-                    document.getElementById('submitBtn').disabled = true;
+                    isPasswordValid = false;
                 }
+                updateSubmitButtonStatus();
             }
 
             function checkDuplication() {
